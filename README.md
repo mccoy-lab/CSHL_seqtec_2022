@@ -49,9 +49,9 @@ Zip the filtered GRCh38 vcf:<br>
 ## Step 3: Get alignment statistics with `samtools stats`
 
 Get alignment statistics for CHM13v2 bams:<br>
-`samtools stats -r T2T_data/references/CHM13v2.chr21.fasta -@ 4 T2T_data/alignments/HG00116.CHM13v2.chr21.cram > HG00116.CHM13v2.chr21.cramstats.txt`
+`samtools stats -r T2T_data/references/CHM13v2.chr21.fasta -@ 4 T2T_data/alignments/HG00116.CHM13v2.chr21.cram > HG00116.CHM13v2.chr21.cramstats.txt`<br>
 `samtools stats -r T2T_data/references/CHM13v2.chr21.fasta -@ 4 T2T_data/alignments/HG01509.CHM13v2.chr21.cram > HG01509.CHM13v2.chr21.cramstats.txt`
 
 Get alignment statistics for GRCh38 bams:<br>
-`samtools stats -r T2T_data/references/GRCh38.chr21.fasta -@ 4 T2T_data/alignments/HG00116.GRCh38.chr21.cram > HG00116.GRCh38.chr21.cramstats.txt`
+`samtools stats -r T2T_data/references/GRCh38.chr21.fasta -@ 4 T2T_data/alignments/HG00116.GRCh38.chr21.cram > HG00116.GRCh38.chr21.cramstats.txt`<br>
 `samtools stats -r T2T_data/references/GRCh38.chr21.fasta -@ 4 T2T_data/alignments/HG01509.GRCh38.chr21.cram > HG01509.GRCh38.chr21.cramstats.txt`
