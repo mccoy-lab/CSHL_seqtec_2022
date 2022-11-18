@@ -11,7 +11,7 @@ Unpack the data:<br>
 
 ## Step 2: Variant calling with `freebayes`
 
-### Run variant calling
+### 2.1: Run variant calling
 
 Start a `screen` session to run CHM13v2 variant calling:<br>
 `screen -S freebayes_CHM13v2`
@@ -25,7 +25,9 @@ Start another `screen` session to run GRCh38 variant calling:<br>
 Within this screen session, run freebayes on the GRCh38 alignments (using `time` as before):<br>
 `time freebayes -f T2T_data/references/GRCh38.chr21.fasta --genotype-qualities T2T_data/alignments/*.GRCh38.chr21.cram > GRCh38.chr21.vcf`
 
-### Filter to high-quality variants
+Once `freebayes` is done running, we shouldn't need these `screen` sessions anymore.
+
+### 2.2: Filter to high-quality variants
 
 Filter CHM13v2 vcf to variants with 99% probability:<br>  
 `vcffilter -f "QUAL > 20" CHM13v2.chr21.vcf > CHM13v2.chr21.filtered.vcf`
@@ -33,7 +35,7 @@ Filter CHM13v2 vcf to variants with 99% probability:<br>
 Filter GRCh38 vcf to variants with 99% probability:<br>  
 `vcffilter -f "QUAL > 20" GRCh38.chr21.vcf > GRCh38.chr21.filtered.vcf`
 
-### Zip and index the filtered vcfs
+### 2.3: Zip and index the filtered vcfs
 
 Zip the filtered CHM13v2 vcf:<br>
 `bgzip CHM13v2.chr21.filtered.vcf`
@@ -42,6 +44,7 @@ Zip the filtered CHM13v2 vcf:<br>
 Zip the filtered GRCh38 vcf:<br>
 `bgzip GRCh38.chr21.filtered.vcf`
 `tabix -p vcf GRCh38.chr21.filtered.vcf.gz`
+
 
 ## Step 3: Get alignment statistics with `samtools stats`
 
