@@ -29,10 +29,10 @@ Once `freebayes` is done running, we shouldn't need these `screen` sessions anym
 
 ### 2.2: Filter to high-quality variants
 
-Filter CHM13v2 vcf to variants with 99% probability:<br>  
+Filter CHM13v2 vcf to variants with 99% probability:<br>
 `vcffilter -f "QUAL > 20" CHM13v2.chr21.vcf > CHM13v2.chr21.filtered.vcf`
 
-Filter GRCh38 vcf to variants with 99% probability:<br>  
+Filter GRCh38 vcf to variants with 99% probability:<br>
 `vcffilter -f "QUAL > 20" GRCh38.chr21.vcf > GRCh38.chr21.filtered.vcf`
 
 ### 2.3: Zip and index the filtered vcfs
