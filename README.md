@@ -55,3 +55,25 @@ Get alignment statistics for CHM13v2 bams:<br>
 Get alignment statistics for GRCh38 bams:<br>
 `samtools stats -r T2T_data/references/GRCh38.chr21.fasta -@ 4 T2T_data/alignments/HG00116.GRCh38.chr21.cram > HG00116.GRCh38.chr21.cramstats.txt`<br>
 `samtools stats -r T2T_data/references/GRCh38.chr21.fasta -@ 4 T2T_data/alignments/HG01509.GRCh38.chr21.cram > HG01509.GRCh38.chr21.cramstats.txt`
+
+
+## Step 4: Get variant calling statistics with `bcftools stats`
+
+Get variant calling statistics for CHM13v2 vcf:<br>
+`bcftools stats -s- CHM13v2.chr21.filtered.vcf.gz > CHM13v2.chr21.filtered.stats.txt`
+
+Get variant calling statistics for GRCh38 vcf:<br>
+`bcftools stats -s- GRCh38.chr21.filtered.vcf.gz > GRCh38.chr21.filtered.stats.txt`
+
+
+## Step 5: Plot alignment and variant calling statistics
+
+Plot variant counts, as well as proper pairing, and mismatch rate stats for alignment, as shown in the `analyze_stats.ipynb` notebook.
+
+## Step 6: Plot KCNE1 alignments in IGV
+
+First, either `scp` the crams to the local, or just `wget` them straight to the local.
+
+Using `grep` determine the coordinates of KCNE1 from the Gencode gff files:<br>
+`zgrep "KCNE1" CHM13v2.chr21.gencode.v35.gff3.gz | head -n 1 | cut -f 1,4,5`<br>
+`zgrep "KCNE1" GRCh38.chr21.gencode.v35.gff3.gz | head -n 1 | cut -f 1,4,5`
