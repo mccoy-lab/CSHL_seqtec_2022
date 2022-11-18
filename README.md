@@ -38,12 +38,12 @@ Filter GRCh38 vcf to variants with 99% probability:<br>
 ### 2.3: Zip and index the filtered vcfs
 
 Zip the filtered CHM13v2 vcf:<br>
-`bgzip CHM13v2.chr21.filtered.vcf`
+`bgzip CHM13v2.chr21.filtered.vcf`<br>
 `tabix -p vcf CHM13v2.chr21.filtered.vcf.gz`
 
 Zip the filtered GRCh38 vcf:<br>
-`bgzip GRCh38.chr21.filtered.vcf`
-`tabix -p vcf GRCh38.chr21.filtered.vcf.gz`
+`bgzip GRCh38.chr21.filtered.vcf`<br>
+`tabix -p vcf GRCh38.chr21.filtered.vcf.gz`<br>
 
 
 ## Step 3: Get alignment statistics with `samtools stats`
