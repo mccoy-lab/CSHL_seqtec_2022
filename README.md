@@ -8,6 +8,17 @@ The data is hosted on DropBox, you can download it with the following `wget` com
 Unpack the data:<br>
 `tar -xzf T2T_data.tar.gz`
 
+There are two directories in `T2T_data`:
+1. `alignments`: contains chr21 alignments for two samples on GRCh38 and CHM13v2
+2. `references`: contains fastas, gffs, and corresponding indicies for GRCh38 and CHM13v2
+
+### Where did the data come from?
+1. `CHM13v2.chr21.fasta`: Full genome fasta downloaded from https://www.ncbi.nlm.nih.gov/assembly/GCA_009914755.4. Then, run `samtools faidx <file> chr21` to isolate chr21.
+2. `GRCh38.chr21.fasta`: Full genome fasta downloaded from https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.40. Then, run `samtools faidx <file> chr21` to isolate chr21.
+3. `CHM13v2.chr21.gencode.v35.gff3.gz`. Full GFF downloaded from https://github.com/marbl/CHM13#downloads (the [Sorted GFF](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_GENCODEv35_CAT_Liftoff.vep.gff3.gz) file under `Assembly v2.0`. Then, run `tabix -p gff <file>` and `tabix <file> chr21` to isolate chr21.
+4. `GRCh38.chr21.gencode.v35.gff3.gz`. Full GFF downloaded from https://www.gencodegenes.org/human/ under [Comprehensive gene annotation](https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_42/gencode.v42.annotation.gff3.gz). Then, run `tabix -p gff <file>` and `tabix <file> chr21` to isolate chr21.
+5. The CHM13v2 cram files were downloaded from the T2T AnVil workspace [here](https://anvil.terra.bio/#workspaces/anvil-datastorage/AnVIL_T2T). Navigate to the "Data" tab at the top, and then the "Participant" data table via the sidebar on the left. The crams and cram indicies are in the `cram` and `cram_index` columns, respectively. Then, run `samtools view -ShC -T <ref.fasta> <cram> chr21` to isolate chr21.
+6. The GRCh38 cram files were downloaded from SRA [here](https://ftp.sra.ebi.ac.uk/vol1/run/). You'll have to get the SRA accession for each sample, and navigate to the appropriate directory in SRA. For example, sample HG00116 has accession: `ERR3240132`; the path to the cram file is https://ftp.sra.ebi.ac.uk/vol1/run/ERR324/ERR3240132/. Then, run `samtools view -ShC -T <ref.fasta> <cram> chr21` to isolate chr21.
 
 ## Step 2: Variant calling with `freebayes`
 
